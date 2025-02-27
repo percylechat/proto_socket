@@ -23,8 +23,8 @@ def handle_message(msg):
 
 @socketio.on("connect")
 def handle_connect():
-    user_name = request.args.get("username")
-    print(f"Client connecté: {user_name} avec le sid {request.sid}")
+    # user_name = request.args.get("username")
+    # print(f"Client connecté: {user_name} avec le sid {request.sid}")
     emit("response", "Bienvenue sur le serveur WebSocket!")
 
 
