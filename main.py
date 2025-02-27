@@ -1,8 +1,11 @@
 from flask import Flask, request
 from flask_socketio import SocketIO, emit
+from flask_cors import CORS, cross_origin
+
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")  # Active WebSockets avec CORS
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route("/")

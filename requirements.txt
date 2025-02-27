@@ -1,0 +1,4 @@
+flask
+python_socketio
+flash_socketio
+flask_cors
