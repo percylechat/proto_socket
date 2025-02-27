@@ -13,14 +13,18 @@ def index():
 @socketio.on("message")
 def handle_message(msg):
     print(f"Message reçu: {msg}")
-    emit(
-        "response", f"Message reçu: {msg}", broadcast=True
-    )  # Répond à tous les clients
+    if request.args.get("username") == "claire":
+        emit("response", "hello claire")
+    else:
+        emit(
+            "response", "Help! unauthorized user", broadcast=True
+        )  # Répond à tous les clients
 
 
 @socketio.on("connect")
 def handle_connect():
-    print(f"Client connecté: {request.sid}")
+    user_name = request.args.get("username")
+    print(f"Client connecté: {user_name} avec le sid {request.sid}")
     emit("response", "Bienvenue sur le serveur WebSocket!")
 
 
